@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700;800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+==========================================================================
+【AI HANDOVER NOTE】
+1. DESIGN PHILOSOPHY:
+   - Primary concept: 'Red Carpet Luxury' — a premium event venue brand that evokes exclusivity, celebration, and VIP treatment
+   - Visual style: Sophisticated glamour with modern elegance, combining classic luxury (gold accents, serif typography) with contemporary web design (clean layouts, smooth animations)
+   - This is NOT minimalist — it's intentionally rich and celebratory, using bold reds and golds to create emotional impact while maintaining readability and professionalism
+   - The design must feel like walking into a high-end event: dramatic, memorable, and premium
+
+2. TYPOGRAPHY:
+   - Display/Headings: Playfair Display — a luxury serif that conveys elegance and prestige, perfect for hero titles and section headings
+   - Body/UI: Inter — clean, modern, highly readable for descriptions, forms, and navigation
+   - Accent/Decorative: Cormorant Garamond — for special callouts, testimonials, and elegant subheadings
+   - Hierarchy: Large dramatic headings (48-72px) with generous letter-spacing, medium body text (16-18px) for accessibility
+
+3. COLOR SYSTEM:
+   - Brand Primary (Red): OKLCH red with high chroma (H: 25°) — represents the 'Red Carpet' brand identity, used for CTAs, accents, and emotional highlights
+   - Brand Secondary (Gold): Warm gold (H: 85°) — luxury accent for borders, icons, and premium touches
+   - Neutral Base (Black/White): High contrast for text and backgrounds, ensuring WCAG AAA compliance
+   - --primary maps to brand red for buttons and key actions
+   - --accent maps to gold for decorative elements and hover states
+   - --ring uses gold to create premium focus states
+   - Semantic colors: success (green for booking confirmations), warning (amber for availability alerts), destructive (deeper red for errors)
+
+4. USAGE GUIDE:
+   - Layout: Full-width hero sections with cinematic imagery, followed by centered content containers (max-width: 1280px) for readability
+   - Special effects: Use backdrop-blur for overlay cards on hero images, subtle gold rim-light on hover for cards, smooth scroll animations for section reveals
+   - Card design: Elevated surfaces with subtle shadows, gold borders on hover, red accent lines for active states
+   - CTA buttons: Bold red primary buttons with gold hover states, white text for maximum contrast
+   - Gallery: Bento-style grid with varying aspect ratios, gold borders on hover, lightbox with dark overlay
+   - Mobile-first: Ensure touch targets are 44px minimum, stack cards vertically, maintain hierarchy with larger headings
+   - Accessibility: All text meets WCAG AA (4.5:1 for body, 3:1 for large text), focus indicators use gold ring, semantic HTML for screen readers
+==========================================================================
+*/
+
+:root {
+  /* Typography */
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  
+  /* Radius */
+  --radius: 0.5rem;
+
+  /* Luxury Dark Palette (Default) */
+  --background: oklch(0.08 0.005 25);
+  --foreground: oklch(0.95 0.005 85);
+  --card: oklch(0.11 0.01 25);
+  --card-foreground: oklch(0.95 0.005 85);
+  --popover: oklch(0.08 0.005 25);
+  --popover-foreground: oklch(0.95 0.005 85);
+  --primary: oklch(0.55 0.22 25);
+  --primary-foreground: oklch(0.99 0.002 85);
+  --secondary: oklch(0.72 0.14 85);
+  --secondary-foreground: oklch(0.08 0.005 25);
+  --muted: oklch(0.15 0.015 25);
+  --muted-foreground: oklch(0.65 0.03 85);
+  --accent: oklch(0.78 0.15 85);
+  --accent-foreground: oklch(0.08 0.005 25);
+  --destructive: oklch(0.55 0.25 20);
+  --destructive-foreground: oklch(0.99 0.002 85);
+  --border: oklch(0.18 0.02 25);
+  --input: oklch(0.18 0.02 25);
+  --ring: oklch(0.78 0.15 85);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.55 0.22 25);
+  --chart-2: oklch(0.78 0.15 85);
+  --chart-3: oklch(0.45 0.20 25);
+  --chart-4: oklch(0.88 0.12 85);
+  --chart-5: oklch(0.35 0.08 25);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.06 0.005 25);
+  --sidebar-foreground: oklch(0.85 0.03 85);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(0.99 0.002 85);
+  --sidebar-accent: oklch(0.78 0.15 85);
+  --sidebar-accent-foreground: oklch(0.08 0.005 25);
+  --sidebar-border: oklch(0.15 0.02 25);
+  --sidebar-ring: oklch(0.78 0.15 85);
+}
+
+.dark {
+  /* Dark mode is now the default in :root, but we keep the class for compatibility */
+  --background: oklch(0.06 0.005 25);
+  --card: oklch(0.09 0.01 25);
+}
+
+@theme inline {
+  /* Shadcn Core Mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts Mapping */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar Mapping */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: "Playfair Display", serif;
+  --font-accent: "Cormorant Garamond", serif;
+
+  /* Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
+  }
+}
